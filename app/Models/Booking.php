@@ -21,12 +21,12 @@ class Booking extends Model
 
     public function seeker(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'seeker_id');
     }
 
     public function provider(): BelongsTo
     {
-        return $this->belongsTo(Profile::class, 'user_id');
+        return $this->belongsTo(Profile::class, 'provider_id');
     }
 
 }

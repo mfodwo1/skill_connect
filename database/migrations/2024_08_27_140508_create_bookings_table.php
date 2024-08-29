@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('provider_id')->constrained('users');
             $table->dateTime('booking_date');
             $table->text('booking_message');
-            $table->boolean('status');
+            $table->string('status');
             $table->timestamps();
         });
     }
