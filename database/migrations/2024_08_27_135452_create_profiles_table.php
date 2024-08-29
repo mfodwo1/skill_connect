@@ -20,6 +20,8 @@ return new class extends Migration
             $table->float('rating')->default(0);
             $table->boolean('verified')->default(false);
             $table->boolean('availability')->default(true);
+            $table->float('latitude' )->nullable();
+            $table->float('longitude' )->nullable();
             $table->timestamps();
         });
     }

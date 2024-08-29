@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class CategoryListing extends Component
 {
     public $categories;

@@ -14,7 +14,7 @@ class Profile extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'user_id', 'bio', 'skills', 'portfolio_url', 'rating', 'verified', 'availability'
+        'user_id', 'bio', 'skills', 'portfolio_url', 'rating', 'verified', 'availability', 'latitude', 'longitude'
     ];
 
 

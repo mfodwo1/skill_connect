@@ -32,6 +32,11 @@
                 </label>
             </div>
 
+            <!-- Hidden fields to capture location coordinates -->
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+
+
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
@@ -45,4 +50,17 @@
             </div>
         </form>
     </x-authentication-card>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    document.getElementById('latitude').value = position.coords.latitude;
+                    document.getElementById('longitude').value = position.coords.longitude;
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+        });
+    </script>
 </x-guest-layout>

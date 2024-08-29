@@ -3,14 +3,21 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class Profile extends Component
+#[Layout('layouts.app')]
+#[Title('Profile')]
+class ProviderProfile extends Component
 {
     public $bio;
     public $skills;
     public $portfolio_url;
     public $availability;
+
+    public $latitude;
+    public $longitude;
 
     public function mount()
     {
@@ -30,7 +37,9 @@ class Profile extends Component
             'bio' => 'required|string|max:255',
             'skills' => 'required|string',
             'portfolio_url' => 'nullable|url',
-            'availability' => 'required|string|max:255',
+            'availability' => 'required|boolean|max:255',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
         ]);
 
         $profile = Auth::user()->profile()->updateOrCreate(
@@ -40,6 +49,8 @@ class Profile extends Component
                 'skills' => $this->skills,
                 'portfolio_url' => $this->portfolio_url,
                 'availability' => $this->availability,
+                'latitude' => $this->latitude,
+                'longitude' => $this->longitude,
             ]
         );
 

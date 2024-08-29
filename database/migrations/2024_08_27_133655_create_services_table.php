@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('category');
             $table->decimal('price', 10, 2);
+            $table->float('latitude' )->nullable();
+            $table->float('longitude' )->nullable();
             $table->timestamps();
         });
     }

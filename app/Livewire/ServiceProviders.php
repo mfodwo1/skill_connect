@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Service;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ServiceProviders extends Component
 {
     public $serviceId;

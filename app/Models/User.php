@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -63,6 +64,27 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isServiceProvider()
+    {
+        return $this->role === 'service_provider';
+    }
+    public function isServiceSeeker()
+    {
+        return $this->role === 'service_seeker';
+    }
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function getRedirectRoute(): string
+    {
+        return match ((string)$this->role) {
+            'service_provider' => 'provider-profile',
+            'service_seeker' => 'categories',
+        };
     }
 
     public function profile(): HasOne

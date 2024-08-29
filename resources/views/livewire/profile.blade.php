@@ -30,6 +30,25 @@
             @error('availability') <span class="error">{{ $message }}</span> @enderror
         </div>
 
+        <input type="hidden" id="latitude" name="latitude" wire:model="latitude" readonly>
+        @error('latitude') <span class="error">{{ $message }}</span> @enderror
+
+        <input type="hidden" id="longitude" name="longitude" wire:model="longitude" readonly>
+        @error('longitude') <span class="error">{{ $message }}</span> @enderror
+
         <button type="submit">Save Profile</button>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    @this.set('latitude', position.coords.latitude);
+                    @this.set('longitude', position.coords.longitude);
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+        });
+    </script>
 </div>
