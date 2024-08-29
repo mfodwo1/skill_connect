@@ -11,7 +11,7 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'booking_id', 'sender_id', 'receiver_id', 'message'
+        'sender_id', 'receiver_id', 'message'
     ];
 
     public function booking(): BelongsTo
@@ -21,12 +21,12 @@ class Message extends Model
 
     public function sender(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'sender_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function receiver(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'receiver_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

@@ -32,6 +32,12 @@
                 </header>
             @endif
 
+
+            @if (Auth::user()->unreadNotifications->isEmpty())
+                <p>No new notifications.</p>
+            @endif
+
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

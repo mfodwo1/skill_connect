@@ -42,6 +42,7 @@
                         Calculating...
                     @endif
                 </p>
+                <a href="{{ route('service.provider.page', $service->id) }}">View Service Details</a>
             </li>
         @endforeach
     </ul>

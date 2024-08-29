@@ -10,15 +10,15 @@ use Livewire\Component;
 #[Layout('layouts.app')]
 class Messenger extends Component
 {
-    public $providerId;
-    public $seekerId;
-    public $messages;
+    public $receiverId;
+    public $messages = [];
     public $newMessage;
 
-    public function mount($providerId, $seekerId)
+    protected $listeners = ['messageSent' => 'loadMessages'];
+
+    public function mount($receiverId)
     {
-        $this->providerId = $providerId;
-        $this->seekerId = $seekerId;
+        $this->receiverId = $receiverId;
 
         $this->loadMessages();
     }
@@ -26,12 +26,12 @@ class Messenger extends Component
     public function loadMessages()
     {
         $this->messages = Message::where(function($query) {
-            $query->where('sender_id', $this->providerId)
-                ->where('receiver_id', $this->seekerId);
+            $query->where('sender_id', Auth::id())
+                ->where('receiver_id', $this->receiverId);
         })->orWhere(function($query) {
-            $query->where('sender_id', $this->seekerId)
-                ->where('receiver_id', $this->providerId);
-        })->orderBy('created_at', 'asc')->get();
+            $query->where('sender_id', $this->receiverId)
+                ->where('receiver_id', Auth::id());
+        })->orderBy('created_at', 'asc')->get()->toArray();
     }
 
     public function sendMessage()
@@ -40,20 +40,21 @@ class Messenger extends Component
             'newMessage' => 'required|string|max:500',
         ]);
 
-        Message::create([
-            'booking_id' => null, // Assuming there's no specific booking at this stage
+        $message = Message::create([
             'sender_id' => Auth::id(),
-            'receiver_id' => Auth::id() === $this->providerId ? $this->seekerId : $this->providerId,
+            'receiver_id' => $this->receiverId,
             'message' => $this->newMessage,
         ]);
 
         $this->newMessage = '';
         $this->loadMessages();
+
+        // Emit the event to other components
+        $this->dispatch('messageSent');
     }
 
     public function render()
     {
-        $this->loadMessages();
         return view('livewire.messenger');
     }
 }

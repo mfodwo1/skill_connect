@@ -57,6 +57,7 @@ class BookingNotification extends Notification
             'service_id' => $this->booking->service_id,
             'seeker_id' => $this->booking->seeker_id,
             'booking_date' => $this->booking->booking_date,
+            'booking_message' => $this->booking->booking_message,
         ];
     }
 }

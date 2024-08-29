@@ -11,7 +11,7 @@ class Booking extends Model
     use HasFactory;
 
     protected $fillable = [
-        'service_id', 'seeker_id', 'provider_id', 'booking_date', 'status', 'payment_status', 'total_amount'
+        'service_id', 'seeker_id', 'provider_id', 'booking_date', 'status', 'booking_message'
     ];
 
     public function service(): BelongsTo
@@ -21,12 +21,12 @@ class Booking extends Model
 
     public function seeker(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'seeker_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function provider(): BelongsTo
     {
-        return $this->belongsTo(Profile::class, 'provider_id');
+        return $this->belongsTo(Profile::class, 'user_id');
     }
 
 }

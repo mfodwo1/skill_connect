@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->constrained('services');
-            $table->foreignId('seeker_id')->constrained('users')->on('id');
-            $table->foreignId('provider_id')->constrained('providers');
+            $table->foreignId('seeker_id')->constrained('users');
+            $table->foreignId('provider_id')->constrained('users');
             $table->dateTime('booking_date');
-            $table->enum('status', ['pending', 'confirmed', 'completed', 'cancelled']);
-            $table->enum('payment_status', ['pending', 'paid', 'failed']);
-            $table->decimal('total_amount', 10, 2);
-
+            $table->text('booking_message');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
