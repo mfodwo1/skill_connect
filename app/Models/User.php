@@ -97,9 +97,9 @@ class User extends Authenticatable
         return $this->hasMany(Booking::class, 'seeker_id');
     }
     public function providerBookings(): HasMany
-        {
-            return $this->hasMany(Booking::class, 'provider_id');
-        }
+    {
+        return $this->hasMany(Booking::class, 'provider_id');
+    }
 
     public function messages(): HasMany
     {

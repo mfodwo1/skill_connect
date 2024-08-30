@@ -10,6 +10,7 @@ use App\Livewire\ProviderProfile;
 use App\Livewire\SeekerBookings;
 use App\Livewire\ServiceProviderPage;
 use App\Livewire\ServiceProviderProfile;
+use App\Livewire\Settings;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,6 +39,8 @@ Route::middleware([
 
         Route::get('/bookings', ManageBookings::class)->name('bookings');
         Route::get('/bookings-list', SeekerBookings::class)->name('bookings.list');
+
+        Route::get('/settings', Settings::class)->name('settings');
 
     });
 

@@ -3,14 +3,18 @@
 namespace App\Livewire;
 
 use App\Models\Message;
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Messenger extends Component
 {
     public $receiverId;
+    public $receiverName;
+    public $profileImage;
     public $messages = [];
     public $newMessage;
 
@@ -19,6 +23,8 @@ class Messenger extends Component
     public function mount($receiverId)
     {
         $this->receiverId = $receiverId;
+        $this->receiverName = User::where('id',$receiverId)->value('name');
+        $this->profileImage = Profile::where('id',Auth::id())->value('name');
 
         $this->loadMessages();
     }
