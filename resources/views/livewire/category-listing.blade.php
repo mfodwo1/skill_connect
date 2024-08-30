@@ -13,7 +13,7 @@
                                 width={400}
                                 height={300}
                                 class="object-cover w-full h-full"
-                                src="{{asset($category->cover_image)}}"
+                                src="{{asset('storage/'.$category->cover_image)}}"
                                 alt="Carpentry Image"
                             />
                         </a>

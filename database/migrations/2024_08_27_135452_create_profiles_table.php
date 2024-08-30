@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->text('skills')->nullable();
             $table->string('portfolio_url')->nullable();
+            $table->string('location')->nullable();
             $table->float('rating')->default(0);
             $table->boolean('verified')->default(false);
             $table->boolean('availability')->default(true);

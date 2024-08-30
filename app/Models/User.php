@@ -96,6 +96,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Booking::class, 'seeker_id');
     }
+    public function providerBookings(): HasMany
+        {
+            return $this->hasMany(Booking::class, 'provider_id');
+        }
 
     public function messages(): HasMany
     {
@@ -105,6 +109,11 @@ class User extends Authenticatable
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class, 'seeker_id');
+    }
+
+    public function getTotalProviderBookingsCountAttribute(): int
+    {
+        return $this->providerBookings()->count();
     }
 
 }

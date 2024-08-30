@@ -20,6 +20,7 @@ class Service extends Model
         return $this->belongsTo(Profile::class, 'provider_id');
     }
 
+
     public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);

@@ -25,7 +25,7 @@
 
 <nav class="fixed bottom-0 w-dvw h-[70px] bg-white border-t border-gray-200">
     <div class="max-w-md mx-auto flex items-center justify-around py-2 px-4">
-        <button class="flex flex-col items-center text-gray-600 hover:text-blue-600">
+        <a href="{{ route('bookings') }}" class="flex flex-col items-center text-gray-600 hover:text-blue-600">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -40,7 +40,7 @@
                     d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
                 />
             </svg>
-        </button>
+        </a>
         <button class="flex flex-col items-center text-gray-600 hover:text-blue-600">
             <svg
                 xmlns="http://www.w3.org/2000/svg"

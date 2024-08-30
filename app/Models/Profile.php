@@ -14,7 +14,7 @@ class Profile extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'user_id', 'bio', 'skills', 'portfolio_url', 'rating', 'verified', 'availability', 'latitude', 'longitude'
+        'user_id', 'bio', 'skills', 'portfolio_url', 'location', 'rating', 'verified', 'availability', 'latitude', 'longitude'
     ];
 
 
@@ -31,6 +31,11 @@ class Profile extends Model
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class, 'provider_id');
+    }
+
+    public function getTotalRatingsCountAttribute(): int
+    {
+        return $this->reviews()->count();
     }
 
 }
