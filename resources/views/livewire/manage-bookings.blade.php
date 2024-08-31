@@ -69,7 +69,7 @@
                                                         </span>
                                                     </span>
                                             <span class="text-gray-500 px-2">
-                                              {{ $booking->booking_date }}
+                                              {{ \Carbon\Carbon::parse($booking->booking_date)->format('Y-m-d') }}
                                             </span>
                                         </p>
                                         <p class="text-xs font-medium text-gray-600 px-1">
@@ -77,9 +77,8 @@
                                                         CUSTOMER
                                                     </span>
                                             <span class="text-gray-500 px-1">
-                                                        •
-                                                    </span>
-                                            {{ $booking->seeker->name }}
+                                                {{ $booking->seeker->name }}
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -91,7 +90,6 @@
         </div>
     </section>
 
-    <!-- Jetstream Modal -->
     <!-- Jetstream Modal -->
     <x-dialog-modal wire:model.live="showModal">
         <x-slot name="title">
@@ -132,8 +130,8 @@
                     </span>
                 </span>
                     <span class="text-gray-500 px-2">
-                    {{ $selectedBooking->booking_date }}
-                </span>
+                        {{ \Carbon\Carbon::parse($selectedBooking->booking_date)->format('Y-m-d') }}
+                    </span>
                 </p>
                 <p class="text-xs font-medium text-gray-600 px-1">
                 <span class="font-mono font-bold pr-1 text-gray-700">

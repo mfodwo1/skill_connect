@@ -32,13 +32,19 @@ class Messenger extends Component
 
     public function loadMessages()
     {
-        $this->messages = Message::where(function($query) {
+        $messages = Message::where(function($query) {
             $query->where('sender_id', Auth::id())
                 ->where('receiver_id', $this->receiverId);
         })->orWhere(function($query) {
             $query->where('sender_id', $this->receiverId)
                 ->where('receiver_id', Auth::id());
-        })->orderBy('created_at', 'asc')->get()->toArray();
+        });
+
+        $this->messages= $messages->orderBy('created_at', 'asc')->get()->toArray();
+
+        foreach ($messages as $message) {
+            $message->update(['is_read'=>true]);
+        }
     }
 
     public function sendMessage()
