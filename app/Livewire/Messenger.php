@@ -14,7 +14,7 @@ class Messenger extends Component
 {
     public $receiverId;
     public $receiverName;
-    public $profileImage;
+    public $receiverProfileImage;
     public $messages = [];
     public $newMessage;
 
@@ -23,8 +23,9 @@ class Messenger extends Component
     public function mount($receiverId)
     {
         $this->receiverId = $receiverId;
-        $this->receiverName = User::where('id',$receiverId)->value('name');
-        $this->profileImage = Profile::where('id',Auth::id())->value('name');
+        $receiver = User::where('id',$receiverId)->first();
+        $this->receiverName =$receiver->name;
+        $this->receiverProfileImage = $receiver->profile_photo_url;
 
         $this->loadMessages();
     }

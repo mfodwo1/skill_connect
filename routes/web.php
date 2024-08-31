@@ -4,6 +4,7 @@ use App\Http\Controllers\LocationController;
 use App\Livewire\CategoryListing;
 use App\Livewire\CategoryServices;
 use App\Livewire\ManageBookings;
+use App\Livewire\MessageList;
 use App\Livewire\Messenger;
 use App\Livewire\NotificationManager;
 use App\Livewire\ProviderProfile;
@@ -35,6 +36,8 @@ Route::middleware([
         Route::get('/categories', CategoryListing::class)->name('categories');
         Route::get('/category/{categoryId}/services', CategoryServices::class)->name('category.services');
         Route::get('/service/{serviceId}/provider', ServiceProviderPage::class)->name('service.provider.page');
+
+        Route::get('/messages', MessageList::class)->name('message.list');
         Route::get('/chat/{receiverId}', Messenger::class)->name('chat');
 
         Route::get('/bookings', ManageBookings::class)->name('bookings');

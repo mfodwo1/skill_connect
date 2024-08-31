@@ -1,7 +1,7 @@
 <div>
     <div class="bg-gray-100 h-screen flex flex-col max-w-lg mx-auto">
         <div class="bg-blue-500 p-4 text-white justify-center grid grid-cols-12 items-center">
-            <a href="{{ route('bookings') }}" wire:navigate.hover class="rounded-md p-1 col-span-1">
+            <a href="{{ route('message.list') }}" wire:navigate.hover class="rounded-md p-1 col-span-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -21,19 +21,18 @@
             <span class="col-span-9 text-center font-bold">
                 @ {{ $receiverName }}
             </span>
-            <button
-                id="login"
+            <div
                 class="rounded-md col-span-2 flex justify-end"
             >
                 <div class="relative w-12 h-12">
                     <Image
-                        src="{{ asset('storage/'.Auth::user()->profile->portfolio_url) }}"
-                        alt="Profile Image"
+                        src="{{ asset($receiverProfileImage)}}"
+                        alt="{{ Auth::user()->name }}"
                         class="rounded-full"
                         layout="fill"
                     />
                 </div>
-            </button>
+            </div>
         </div>
 
         <div class="flex-1 overflow-y-auto p-4">

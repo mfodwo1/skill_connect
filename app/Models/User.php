@@ -101,9 +101,13 @@ class User extends Authenticatable
         return $this->hasMany(Booking::class, 'provider_id');
     }
 
-    public function messages(): HasMany
+    public function sender(): HasMany
     {
         return $this->hasMany(Message::class, 'sender_id');
+    }
+    public function receiver(): HasMany
+    {
+        return $this->hasMany(Message::class, 'receiver_id');
     }
 
     public function reviews(): HasMany

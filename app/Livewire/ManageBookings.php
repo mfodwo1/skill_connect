@@ -17,7 +17,7 @@ class ManageBookings extends Component
 
     public function mount()
     {
-        $this->bookings = Booking::where('provider_id', Auth::user()->id)->get();
+        $this->bookings = Booking::where('provider_id', Auth::user()->id)->with('seeker')->get();
     }
 
     public function selectBooking($bookingId)
