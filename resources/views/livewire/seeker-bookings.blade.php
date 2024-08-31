@@ -7,7 +7,7 @@
                     <div class="flex items-center">
                         <div class="relative w-14 h-14">
                             <Image
-                                src="{{ asset('storage/'.Auth::user()->profile->portfolio_url) }}"
+                                src="{{ Auth::user()->profile_photo_url }}"
                                 alt="Profile Image"
                                 class="rounded-full"
                                 layout="fill"
@@ -40,7 +40,7 @@
                                             width={400}
                                             height={300}
                                             class="object-cover w-full h-full"
-                                            src="{{$booking->provider->portfolio_url ? asset('storage/'.$booking->provider->portfolio_url):asset('storage/images.jpg') }}"
+                                            src="{{$booking->provider?->portfolio_url ? asset('storage/'.$booking->provider->portfolio_url):asset('storage/images.jpg') }}"
                                             alt="Carpentry Image"
                                         />
                                     </a>
