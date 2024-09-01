@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provider_id')->constrained('users');
+            $table->foreignId('provider_id')->constrained('profiles');
+            $table->foreignId('category')->constrained('categories');
             $table->string('title');
             $table->text('description');
-            $table->string('category');
             $table->decimal('price', 10, 2);
             $table->float('latitude' )->nullable();
             $table->float('longitude' )->nullable();

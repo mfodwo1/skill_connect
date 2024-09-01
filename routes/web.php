@@ -3,6 +3,7 @@
 use App\Http\Controllers\LocationController;
 use App\Livewire\CategoryListing;
 use App\Livewire\CategoryServices;
+use App\Livewire\CreateProfileAndService;
 use App\Livewire\ManageBookings;
 use App\Livewire\MessageList;
 use App\Livewire\Messenger;
@@ -23,7 +24,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/provider-profile', ProviderProfile::class)->name('profile.setup');
+    Route::get('/create-profile-service', CreateProfileAndService::class)->name('create.profile.service');
+
 
     Route::middleware([
         'ensure_profile_creation',
@@ -32,6 +34,7 @@ Route::middleware([
             return view('dashboard');
         })->name('dashboard');
 
+        Route::get('/provider-profile', ProviderProfile::class)->name('profile.setup');
         Route::get('/notifications', NotificationManager::class)->name('notifications');
         Route::get('/categories', CategoryListing::class)->name('categories');
         Route::get('/category/{categoryId}/services', CategoryServices::class)->name('category.services');

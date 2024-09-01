@@ -1,7 +1,7 @@
 <div>
     <div class="bg-gray-100 h-screen flex flex-col max-w-lg mx-auto">
         <div class="bg-blue-500 p-4 text-white justify-center grid grid-cols-12 items-center">
-            <a href="{{ route('message.list') }}" wire:navigate.hover class="rounded-md p-1 col-span-1">
+            <a href="{{ Auth::user()->role=='service_provider' ? route('message.list'): route('service.provider.page',$receiverId) }}" wire:navigate.hover class="rounded-md p-1 col-span-1">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

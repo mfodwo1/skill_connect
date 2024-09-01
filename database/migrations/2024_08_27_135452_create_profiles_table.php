@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('portfolio_url')->nullable();
             $table->string('location')->nullable();
             $table->float('rating')->default(0);
+            $table->integer('rating_count')->default(0);
             $table->boolean('verified')->default(false);
             $table->boolean('availability')->default(true);
             $table->float('latitude' )->nullable();

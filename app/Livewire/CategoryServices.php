@@ -3,7 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Category;
+use App\Models\Review;
 use App\Models\Service;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
@@ -20,14 +23,8 @@ class CategoryServices extends Component
     public $latitude;
     public $longitude;
 
-    public $rating = 70; // Example rating
-    public $yellowStars;
-
     public function mount($categoryId)
     {
-        $this->yellowStars = $this->getYellowStars($this->rating);
-
-
         $this->categoryId = $categoryId;
         $this->category = Category::findOrFail($this->categoryId)->first();
         $this->services = Service::where('category', $this->categoryId)->with('provider.user')->get();
@@ -39,7 +36,6 @@ class CategoryServices extends Component
         $this->latitude = $latitude;
         $this->longitude = $longitude;
 
-        // Calculate distance for each service
         foreach ($this->services as &$service) {
             $service->distance = $this->calculateDistance(
                 $latitude,
@@ -49,25 +45,6 @@ class CategoryServices extends Component
             );
         }
     }
-
-    public function getYellowStars($rating)
-    {
-        if ($rating >= 0 && $rating <= 5) {
-            return 1;
-        } elseif ($rating >= 6 && $rating <= 15) {
-            return 2;
-        } elseif ($rating >= 16 && $rating <= 30) {
-            return 3;
-        } elseif ($rating >= 31 && $rating <= 50) {
-            return 4;
-        } elseif ($rating > 50) {
-            return 5;
-        }
-
-        return 0;
-    }
-
-
 
     public function calculateDistance($lat1, $lon1, $lat2, $lon2): float
     {

@@ -1,5 +1,4 @@
 <div>
-
     <div class="bg-white min-h-screen h-auto">
         <div class="container mx-auto pb-3 h-full">
             <div class="flex justify-center items-center h-full">
@@ -135,7 +134,7 @@
                                         />
                                         <div class="w-full h-full rounded-full overflow-hidden border-[5px] border-blue-400 flex items-center justify-center bg-gray-200 text-gray-400">
                                            @if($portfolio_url)
-                                            <img src="{{'storage/'.$portfolio_url}}">
+                                            <img src="{{'storage/'.$portfolio_url}}" alt="">
                                             @else
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +217,6 @@
             </button>
         </x-slot>
     </x-dialog-modal>
-
 
 
 

@@ -21,7 +21,7 @@ class CheckServiceProviderProfile
         if ($user && $user->role === 'service_provider') {
             // Check if the profile is incomplete
             if (is_null($user->profile)) {
-                return redirect()->route('profile.setup')->with('status', 'Please complete your profile.');
+                return redirect()->route('create.profile.service')->with('status', 'Please complete your profile.');
             }
         }
 
