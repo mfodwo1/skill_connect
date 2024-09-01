@@ -28,6 +28,7 @@ class CategoryServices extends Component
         $this->categoryId = $categoryId;
         $this->category = Category::findOrFail($this->categoryId)->first();
         $this->services = Service::where('category', $this->categoryId)->with('provider.user')->get();
+
     }
 
     #[on('updateLocation')]

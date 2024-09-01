@@ -40,7 +40,7 @@
                                     <div>
                                         <a href="#" class="block h-[50%]">
                                             <Image
-                                                class="object-cover w-full h-full"
+                                                class="h-36 w-full"
                                                 src="{{ $service->provider->portfolio_url ? asset('storage/'.$service->provider->portfolio_url) : asset('storage/images.jpg') }}"
                                                 alt=""
                                                 width={400}

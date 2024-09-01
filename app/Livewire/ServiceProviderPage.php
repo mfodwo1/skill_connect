@@ -20,7 +20,6 @@ class ServiceProviderPage extends Component
     public $service;
     public $message = 'i want to book';
     public $rating;
-    public $totalRating;
     public $totalTaskCompleted;
     public $review;
 
@@ -28,17 +27,15 @@ class ServiceProviderPage extends Component
     {
         $this->serviceId = $serviceId;
         $this->service = Service::where('id',$this->serviceId)->with('provider')->first();
-        $providerId = $this->service->provider_id;
-        $this->totalRating = Review::where('provider_id', $providerId)->count();
-        $this->totalTaskCompleted = Booking::where('provider_id', $providerId)->where('status', 'completed')->count();
+        $this->totalTaskCompleted = Booking::where('provider_id', $this->service->provider_id)->where('status', 'completed')->count();
     }
 
-    public function bookProvider()
+    public function bookProvider(): void
     {
         $booking = Booking::create([
             'service_id' => $this->service->id,
             'seeker_id' => Auth::id(),
-            'provider_id' => $this->service->id,
+            'provider_id' => $this->service->provider->id,
             'booking_date' => now(),
             'status' => 'pending',
             'booking_message' =>$this->message,

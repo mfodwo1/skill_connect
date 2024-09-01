@@ -39,6 +39,7 @@
             </nav>
         </div>
 
+
         <div class="w-full px-4 mx-auto">
             <div class="relative flex flex-col min-w-0 break-words bg-[#f8f8f8] w-full shadow-xl rounded-lg mt-16">
                 <div>
@@ -57,7 +58,7 @@
                             <div class="flex justify-center py-4 lg:pt-4 pt-8">
                                 <div class="mr-4 p-3 text-center flex flex-col items-center">
                                 <span class="text-xl font-bold block uppercase tracking-wide text-gray-600">
-                                    {{ $totalRating }}
+                                    {{ $service->provider->rating_count }}
                                 </span>
                                     <span class="text-sm text-black">
                                     Ratings

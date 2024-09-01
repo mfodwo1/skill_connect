@@ -3,9 +3,7 @@
         <span class="col-span-9 text-center font-bold">
                 @ {{ Auth()->user()->name }}
             </span>
-        <div
-            class="rounded-md col-span-2 flex justify-end"
-        >
+        <div class="rounded-md col-span-2 flex justify-end">
             <div class="relative w-12 h-12">
                 <Image
                     src="{{ Auth()->user()->profile?->portfolio_url ? asset('storage/'.Auth()->user()->profile?->portfolio_url) : Auth::user()->profile_photo_url }}"

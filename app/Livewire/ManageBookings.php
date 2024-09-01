@@ -22,7 +22,7 @@ class ManageBookings extends Component
 
     public function selectBooking($bookingId)
     {
-        $this->selectedBooking = Booking::findOrFail($bookingId);
+        $this->selectedBooking = Booking::where('id', $bookingId)->first();
         $this->status = $this->selectedBooking->status;
         $this->showModal = true;
     }

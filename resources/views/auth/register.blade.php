@@ -1,7 +1,6 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -16,42 +15,6 @@
                     <form method="POST" action="{{ route('register') }}" class="mt-8">
                         @csrf
                         <div class="space-y-5">
-                            <div class="flex flex-col items-center">
-                                <div class="relative w-28 h-28 mb-4">
-                                    <input
-                                        type="file"
-                                        name="profilePicture"
-                                        id="profilePicture"
-                                        class="absolute w-full h-full opacity-0 cursor-pointer"
-                                        accept="image/*"
-                                        onchange="previewAvatar(event)"
-                                    />
-                                    <div class="w-full h-full rounded-full overflow-hidden border-[5px] border-blue-400 flex items-center justify-center bg-gray-200 text-gray-400">
-                                        <img
-                                            id="avatarPreview"
-                                            src=""
-                                            alt="Avatar"
-                                            class="hidden w-full h-full object-cover"
-                                        />
-                                        <svg
-                                            id="defaultAvatarIcon"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            stroke="currentColor"
-                                            class="w-16 h-16 text-blue-300"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                                            />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div>
                                 <div class="mt-2.5">
                                     <input
