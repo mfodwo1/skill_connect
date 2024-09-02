@@ -14,19 +14,18 @@
         }
     </style>
     <section class="bg-[#ffffffe4] min-h-screen h-auto">
-        <div class="pb-12">
-            <nav class="px-4 justify-center grid grid-cols-12 items-center z-30 relative">
-                <div class="bg-blue-500 w-full p-4 fixed z-40">
+            <nav class="top-0 z-30 fixed w-full h-[70px]">
+                <div class="bg-blue-500 w-full h-[70px] flex items-center">
                     <a href="{{ route('category.services', $service->category) }}"
                        wire:navigate.hover
-                       class="rounded-md px-2 mt-6 col-span-1">
+                       class="ml-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
                             stroke="currentColor"
-                            class="size-9 text-white z-50"
+                            class="size-7 text-white z-50"
                         >
                             <path
                                 stroke-linecap="round"
@@ -37,11 +36,10 @@
                     </a>
                 </div>
             </nav>
-        </div>
 
 
         <div class="w-full px-4 mx-auto">
-            <div class="relative flex flex-col min-w-0 break-words bg-[#f8f8f8] w-full shadow-xl rounded-lg mt-16">
+            <div class="relative flex flex-col min-w-0 break-words bg-[#f8f8f8] w-full shadow-xl rounded-lg mt-[170px]">
                 <div>
                     <div class="flex flex-wrap justify-center relative items-center">
                         <div class="w-full px-4 flex justify-center">
@@ -86,6 +84,8 @@
                                 </a>
 
                                 <button wire:click="bookProvider"
+                                        wire:click="delete"
+                                        wire:confirm="Are you sure you want to book for this service"
                                         wire:loading.attr="disabled"
                                         wire:loading.class="opacity-50"
                                         class="mr-4 p-3 text-center flex flex-col items-center gap-1"
@@ -158,10 +158,10 @@
                             </div>
                         </div>
                         <!-- Rating and review component -->
-                        <div class="bg-gray-200 py-2 flex flex-col justify-center sm:py-6 my-4">
+                        <div class="bg-gray-200 py-2 flex flex-col justify-center sm:py-6 my-4 w-[90%]">
                             <div class="sm:mx-auto">
                                 <div class="w-full flex-col rounded-xl shadow-lg">
-                                    <div class="px-12">
+                                    <div class="px-12 flex justify-center">
                                         <h2 class="text-gray-800 text-sm font-semibold">Your opinion matters to us!</h2>
                                     </div>
 
@@ -186,7 +186,7 @@
                                                 @endfor
                                             </div>
                                         </div>
-                                        <div class="w-3/4 sm:w-full flex flex-col">
+                                        <div class="w-[90%] sm:w-full flex flex-col">
                                             <textarea wire:model="review" rows="3" class="p-4 text-gray-500 rounded-xl resize-none" placeholder="Leave a message, if you want"></textarea>
                                             <button wire:click="submitReview" class="py-3 my-8 text-lg bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl text-white">Rate now</button>
                                         </div>

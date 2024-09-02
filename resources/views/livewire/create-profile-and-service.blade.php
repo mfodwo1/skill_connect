@@ -103,10 +103,9 @@
                             </div>
 
                             <input type="hidden" id="latitude" wire:model="latitude">
-                            @error('latitude') <span>Couldn't get location information </span> @enderror
+                            @error('latitude') <span class="text-red-600">Location information not found. Refresh Page </span><br> @enderror
 
                             <input type="hidden" id="longitude" wire:model="longitude">
-                            @error('longitude') <span>Couldn't get location information</span> @enderror
 
                             <div class="flex w-full">
                                 <button
@@ -170,6 +169,9 @@
                             >
                             @error('servicePrice') <span>{{ $message }}</span> @enderror
                         </div>
+
+                        @error('latitude') <span class="text-red-600">Location information not found. Refresh Page </span><br> @enderror
+
 
                         <div class="flex justify-between px-4 py-6">
                             <button

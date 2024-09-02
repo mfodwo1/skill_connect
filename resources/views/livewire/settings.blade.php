@@ -16,25 +16,8 @@
                         </svg>
                     </a>
 
-                    <!-- Button 2 -->
-                    <button class="flex items-center justify-between w-full px-4 py-4 text-lg font-semibold text-black">
-                        Notifications
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            class="size-6"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </button>
-
                     <!-- Button 3 -->
-                    <button class="flex items-center justify-between w-full px-4 py-4 text-lg font-semibold text-black">
+                    <a href="https://www.privacypolicies.com/live/8e097a47-3ffa-4376-b38b-b3c750bcc564" class="flex items-center justify-between w-full px-4 py-4 text-lg font-semibold text-black">
                         Privacy
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -48,10 +31,11 @@
                                 clipRule="evenodd"
                             />
                         </svg>
-                    </button>
+                    </a>
 
                     <!-- Button 4 -->
-                    <button class="flex items-center justify-between w-full px-4 py-4 text-lg font-semibold text-black">
+                    <a href="mailto:juliussingh23k@gmail.com?subject=Help%20and%20Support"
+                       class="flex items-center justify-between w-full px-4 py-4 text-lg font-semibold text-black">
                         Help & Support
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +49,7 @@
                                 clipRule="evenodd"
                             />
                         </svg>
-                    </button>
+                    </a>
 
                     <!-- Button 5 -->
                     <form method="POST" action="{{ route('logout') }}" x-data>
