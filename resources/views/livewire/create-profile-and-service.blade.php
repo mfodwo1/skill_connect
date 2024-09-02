@@ -124,12 +124,26 @@
                     <div x-show="step === 2">
                         <h3 class="text-center py-4">Create Service</h3>
 
+                        <div  class="mt-2.5">
+                            <select
+                                id="serviceCategory"
+                                wire:model="serviceCategory"
+                                class="block w-full p-5 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
+                            >
+                                <option value="">Select a category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('serviceCategory') <span>{{ $message }}</span> @enderror
+                        </div>
+
                         <div class="mt-2.5">
                             <input
                                 type="text"
                                 id="serviceTitle"
                                 wire:model="serviceTitle"
-                                placeholder="Service Title"
+                                placeholder="Business Name (service Title)"
                                 class="block w-full p-5 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                             >
                             @error('serviceTitle') <span>{{ $message }}</span> @enderror
@@ -144,19 +158,6 @@
                                 class="block w-full p-5 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                             >
                             @error('serviceDescription') <span>{{ $message }}</span> @enderror
-                        </div>
-
-                        <div  class="mt-2.5">
-                            <select
-                                id="serviceCategory"
-                                wire:model="serviceCategory"
-                                class="block w-full p-5 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
-                            >
-                                <option value="">Select a category</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
                         </div>
 
                         <div class="mt-2.5">

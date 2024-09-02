@@ -16,4 +16,8 @@ class Category extends Model
     {
         return $this->belongsToMany(Service::class,'service_id');
     }
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
