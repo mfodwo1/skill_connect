@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -24,15 +25,22 @@ class ServiceResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('provider_id')
-                    ->relationship('provider', 'id')
+                    ->label('Provider Profile')
+                    ->relationship('provider', 'bio')
                     ->required(),
                 Forms\Components\TextInput::make('title')
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('category')
+
+                Select::make('category')
+                    ->label('Category')
+                    ->relationship('categories', 'name')
+                    ->searchable()
+                    ->preload()
                     ->required(),
+
                 Forms\Components\TextInput::make('price')
                     ->required()
                     ->numeric()

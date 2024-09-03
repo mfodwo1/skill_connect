@@ -1,9 +1,9 @@
 <section class="bg-gray-50 min-h-screen h-auto">
     <div class="sm:px-6 max-w-7xl px-2 pb-5">
-        <h2 class="text-xl text-black font-black py-3 sticky top-0 bg-white z-10">
+        <h2 class="text-3xl text-black font-black py-3 sticky top-0 bg-white z-10">
             Services
         </h2>
-        <div class="grid max-w-md grid-cols-1 gap-6 px-4">
+        <div class="grid max-w-md grid-cols-1 gap-6 px-4 mb-14">
 
             @foreach ($categories as $category)
                 <div class="overflow-hidden bg-white rounded shadow">

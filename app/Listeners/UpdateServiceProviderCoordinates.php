@@ -32,8 +32,8 @@ class UpdateServiceProviderCoordinates
 
             // Define validation rules
             $validator = Validator::make(request()->all(), [
-                'latitude' => 'required|numeric|between:-90,90',
-                'longitude' => 'required|numeric|between:-180,180',
+                'latitude' => 'nullable|numeric|between:-90,90',
+                'longitude' => 'nullable|numeric|between:-180,180',
             ]);
 
             // Check if the validation fails
@@ -42,10 +42,12 @@ class UpdateServiceProviderCoordinates
                 return;
             }
 
-            $user->profile()->update([
-                'latitude' => $latitude,
-                'longitude' => $longitude,
-            ]);
+            if ($latitude && $longitude) {
+                $user->profile()->update([
+                    'latitude' => $latitude,
+                    'longitude' => $longitude,
+                ]);
+            }
 
         }
     }

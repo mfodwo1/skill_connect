@@ -1,4 +1,4 @@
-<x-app-layout>
+<div>
     @if(Auth::user()->role === 'service_seeker')
         <section class="bg-gray-50 min-h-screen h-auto">
             <div class="sm:px-6 max-w-7xl px-2 pb-5">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </section>
-    @elseif($profileId)
+    @elseif(Auth::user()->role === 'service_provider' && $profileId)
         <div>
             <div class="bg-white min-h-screen h-auto">
                 <div class="container mx-auto pb-3 h-full">
@@ -497,4 +497,4 @@
         </div>
 
     @endif
-</x-app-layout>
+</div>

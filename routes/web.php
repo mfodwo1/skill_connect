@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Livewire\CategoryListing;
 use App\Livewire\CategoryServices;
 use App\Livewire\CreateProfileAndService;
+use App\Livewire\Dashboard;
 use App\Livewire\ManageBookings;
 use App\Livewire\MessageList;
 use App\Livewire\Messenger;
@@ -30,9 +32,7 @@ Route::middleware([
     Route::middleware([
         'ensure_profile_creation',
     ])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
         Route::get('/provider-profile', ProviderProfile::class)->name('profile.setup');
         Route::get('/notifications', NotificationManager::class)->name('notifications');

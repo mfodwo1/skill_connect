@@ -17,10 +17,11 @@
                         <div class="space-y-5">
                             <div>
                                 <div class="mt-2.5">
-                                    <input
+                                    <x-input
                                         type="text"
                                         name="name"
                                         id="name"
+                                        :value="old('name')"
                                         placeholder="Username"
                                         required autofocus
                                         class="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 outline-none focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
@@ -30,25 +31,11 @@
 
                             <div>
                                 <div class="mt-2.5">
-                                    <select
-                                        name="role"
-                                        id="role"
-                                        class="block w-full p-4 text-black transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 outline-none focus:border-blue-600 focus:bg-white appearance-none"
-                                        style="background-position: right 1rem center; background-size: 1.5rem; background-repeat: no-repeat; background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 24 24%27 stroke=%27currentColor%27%3E%3Cpath stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27M19 9l-7 7-7-7%27 /%3E%3C/svg%3E');"
-                                    >
-                                        <option value="">Role</option>
-                                        <option value="service_provider">Service Provider</option>
-                                        <option value="service_seeker">Service Seeker</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="mt-2.5">
-                                    <input
+                                    <x-input
                                         type="email"
                                         name="email"
                                         id="email"
+                                        :value="old('email')"
                                         placeholder="Email Address"
                                         required autofocus
                                         class="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 outline-none rounded-full bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
@@ -58,14 +45,31 @@
 
                             <div>
                                 <div class="mt-2.5">
-                                    <input
+                                    <x-input
                                         type="tel"
                                         name="phone"
                                         id="phone"
+                                        :value="old('phone')"
                                         placeholder="Phone number"
                                         required autofocus
                                         class="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 outline-none rounded-full bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                                     />
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="mt-2.5">
+                                    <select
+                                        name="role"
+                                        id="role"
+                                        :value="old('role')"
+                                        class="block w-full p-4 text-black transition-all duration-200 border border-gray-200 rounded-full bg-gray-50 outline-none focus:border-blue-600 focus:bg-white appearance-none"
+                                        style="background-position: right 1rem center; background-size: 1.5rem; background-repeat: no-repeat; background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 24 24%27 stroke=%27currentColor%27%3E%3Cpath stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27M19 9l-7 7-7-7%27 /%3E%3C/svg%3E');"
+                                    >
+                                        <option value="">Role</option>
+                                        <option value="service_provider">Service Provider</option>
+                                        <option value="service_seeker">Service Seeker</option>
+                                    </select>
                                 </div>
                             </div>
 

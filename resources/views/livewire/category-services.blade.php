@@ -38,7 +38,7 @@
                             <div class="overflow-hidden bg-white rounded shadow h-[295px]">
                                 <div class="h-[200px]">
                                     <div>
-                                        <a href="#" class="block h-[50%]">
+                                        <a href="{{ route('service.provider.page', $service->id) }}" class="block h-[50%]">
                                             <Image
                                                 class="h-36 w-full"
                                                 src="{{ $service->provider->portfolio_url ? asset('storage/'.$service->provider->portfolio_url) : asset('storage/images.jpg') }}"
@@ -49,52 +49,55 @@
                                         </a>
                                     </div>
 
-                                    <p class="p-2 text-sm text-gray-600 ">
-                                        {{ Str::limit($service->title, 40) }}
-                                    </p>
-                                    <div class="pb-2">
-                                        <!----rating---->
-                                        <div class="flex items-center">
-                                            <div class="text-yellow-400 flex">
-                                                @for($i = 1; $i <= 5; $i++)
-                                                    @if($service->provider->rating >= $i)
-                                                        <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M9.049 3.316a1 1 0 011.902 0l1.286 4.223a1 1 0 00.95.69h4.29a1 1 0 01.588 1.81l-3.462 2.524a1 1 0 00-.363 1.118l1.286 4.223a1 1 0 01-1.537 1.118L10 15.902l-3.462 2.524a1 1 0 01-1.537-1.118l1.286-4.223a1 1 0 00-.363-1.118L2.462 10.04a1 1 0 01.588-1.81h4.29a1 1 0 00.95-.69l1.286-4.223z"></path>
-                                                        </svg>
-                                                    @elseif($service->provider->rating >= ($i - 0.5))
-                                                        <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M9.049 3.316a1 1 0 011.902 0l1.286 4.223a1 1 0 00.95.69h4.29a1 1 0 01.588 1.81l-3.462 2.524a1 1 0 00-.363 1.118l1.286 4.223a1 1 0 01-1.537 1.118L10 15.902l-3.462 2.524a1 1 0 01-1.537-1.118l1.286-4.223a1 1 0 00-.363-1.118L2.462 10.04a1 1 0 01.588-1.81h4.29a1 1 0 00.95-.69l1.286-4.223z"></path>
-                                                        </svg>
-                                                    @else
-                                                        <svg class="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M9.049 3.316a1 1 0 011.902 0l1.286 4.223a1 1 0 00.95.69h4.29a1 1 0 01.588 1.81l-3.462 2.524a1 1 0 00-.363 1.118l1.286 4.223a1 1 0 01-1.537 1.118L10 15.902l-3.462 2.524a1 1 0 01-1.537-1.118l1.286-4.223a1 1 0 00-.363-1.118L2.462 10.04a1 1 0 01.588-1.81h4.29a1 1 0 00.95-.69l1.286-4.223z"></path>
-                                                        </svg>
-                                                    @endif
-                                                @endfor
-                                            </div>
-                                            <p class="ml-2 text-gray-600">({{$service->provider->rating_count}})</p>
-                                        </div>
-
-                                        <div class="flex justify-between px-2">
-                                            <p class="pt-3 text-sm">
-                                                @if(isset($service->distance))
-                                                    {{ $service->distance }} km
-                                                @else
-                                                    Calculating...
-                                                @endif
-                                            </p>
-
-                                            <a
-                                                href="{{ route('service.provider.page', $service->id) }}"
-                                                wire:navigate.hover
-                                                class="bg-gray-400 px-4 py-2 rounded-full mt-2 text-sm"
-                                            >
-                                                View
-                                            </a>
-                                        </div>
-                                        <p class="pt-2 text-sm">
-                                            {{ Str::limit($service->provider->location, 20)}}
+                                    <div class="px-2">
+                                        <p class="py-2 text-sm font-semibold text-gray-600 ">
+                                            {{ Str::limit($service->title, 40) }}
                                         </p>
+                                        <hr>
+                                        <div class="pt-2">
+                                            <!----rating---->
+                                            <div class="flex items-center">
+                                                <div class="text-yellow-400 flex">
+                                                    @for($i = 1; $i <= 5; $i++)
+                                                        @if($service->provider->rating >= $i)
+                                                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M9.049 3.316a1 1 0 011.902 0l1.286 4.223a1 1 0 00.95.69h4.29a1 1 0 01.588 1.81l-3.462 2.524a1 1 0 00-.363 1.118l1.286 4.223a1 1 0 01-1.537 1.118L10 15.902l-3.462 2.524a1 1 0 01-1.537-1.118l1.286-4.223a1 1 0 00-.363-1.118L2.462 10.04a1 1 0 01.588-1.81h4.29a1 1 0 00.95-.69l1.286-4.223z"></path>
+                                                            </svg>
+                                                        @elseif($service->provider->rating >= ($i - 0.5))
+                                                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M9.049 3.316a1 1 0 011.902 0l1.286 4.223a1 1 0 00.95.69h4.29a1 1 0 01.588 1.81l-3.462 2.524a1 1 0 00-.363 1.118l1.286 4.223a1 1 0 01-1.537 1.118L10 15.902l-3.462 2.524a1 1 0 01-1.537-1.118l1.286-4.223a1 1 0 00-.363-1.118L2.462 10.04a1 1 0 01.588-1.81h4.29a1 1 0 00.95-.69l1.286-4.223z"></path>
+                                                            </svg>
+                                                        @else
+                                                            <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M9.049 3.316a1 1 0 011.902 0l1.286 4.223a1 1 0 00.95.69h4.29a1 1 0 01.588 1.81l-3.462 2.524a1 1 0 00-.363 1.118l1.286 4.223a1 1 0 01-1.537 1.118L10 15.902l-3.462 2.524a1 1 0 01-1.537-1.118l1.286-4.223a1 1 0 00-.363-1.118L2.462 10.04a1 1 0 01.588-1.81h4.29a1 1 0 00.95-.69l1.286-4.223z"></path>
+                                                            </svg>
+                                                        @endif
+                                                    @endfor
+                                                </div>
+                                                <p class="ml-2 text-gray-600">({{$service->provider->rating_count}})</p>
+                                            </div>
+
+                                            <div class="flex justify-between items-center">
+                                                <p class="pt-3 text-sm text-center">
+                                                    @if(isset($service->distance))
+                                                        {{ $service->distance }} km
+                                                    @else
+                                                        Calculating...
+                                                    @endif
+                                                </p>
+
+                                                <a
+                                                    href="{{ route('service.provider.page', $service->id) }}"
+                                                    wire:navigate.hover
+                                                    class="bg-blue-300 font-bold px-2 py-1 rounded-lg mt-2 text-sm"
+                                                >
+                                                    View
+                                                </a>
+                                            </div>
+                                            <p class="pt-2 text-sm relative bottom-0">
+                                                {{ Str::limit($service->provider->location, 20)}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

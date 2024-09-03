@@ -1,5 +1,5 @@
 <div>
-    <h2>Notifications</h2>
+    <h2 class="text-3xl font-bold leading-tight text-black py-3 px-4 sticky top-0 bg-white z-10 p-2">Notifications</h2>
 {{--    @foreach ($notifications as $notification)--}}
 {{--        <div>--}}
 {{--            <strong>Booking Date:</strong> {{ $notification->data['booking_date'] }}<br>--}}
@@ -12,7 +12,14 @@
 {{--    @endforeach--}}
 
     @if ($notifications->isEmpty())
-        <p>No new notifications.</p>
+        <div class="h-screen w-dvw flex flex-col justify-center items-center">>
+            <img src="https://img.freepik.com/free-vector/push-notifications-concept-illustration_114360-4986.jpg?t=st=1725362470~exp=1725366070~hmac=a72c63d2a9b73199c678b2928b9fea9c1fd8defcbd742aaed7b9e44536076b37&w=740"
+             alt=""
+                 class="h-[30%] w-[80%]"
+            />
+            <p class="text-lg font-semibold"> No new notifications</p>
+        </div>
+
     @endif
 {{--    "data" => "{"booking_id":1,"service_id":3,"seeker_id":4,"booking_date":"2024-09-01T19:06:55.902821Z","booking_message":"i want to book"}--}}
     <section class="bg-gray-50 min-h-screen h-auto">

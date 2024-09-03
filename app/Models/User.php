@@ -69,7 +69,7 @@ class User extends Authenticatable
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->role === 'admin' && $this->hasVerifiedEmail();
+        return str_ends_with($this->email, '@skgroupofbrands.shop') && $this->hasVerifiedEmail();
     }
 
     public function isServiceProvider()

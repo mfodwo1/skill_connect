@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
+
 
 class UserResource extends Resource
 {
@@ -32,16 +35,22 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required(),
-                Forms\Components\TextInput::make('current_team_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('profile_photo_path'),
-                Forms\Components\Textarea::make('two_factor_secret')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('two_factor_recovery_codes')
-                    ->columnSpanFull(),
-                Forms\Components\DateTimePicker::make('two_factor_confirmed_at'),
-                Forms\Components\Textarea::make('role')
-                    ->columnSpanFull(),
+
+                FileUpload::make('profile_photo_path')
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ]),
+
+                Select::make('role')
+                    ->options([
+                        'service_provider' => 'Service Provider',
+                        'service_seeker' => 'Service Seeker',
+                    ]),
+
             ]);
     }
 

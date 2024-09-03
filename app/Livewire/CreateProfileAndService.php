@@ -30,8 +30,8 @@ class CreateProfileAndService extends Component
         'portfolio_url' => 'nullable|image|max:1024',
         'location' => 'required|string|max:255',
         'availability' => 'nullable|boolean',
-        'latitude' => 'required|numeric|between:-90,90',
-        'longitude' => 'required|numeric|between:-180,180',
+        'latitude' => 'nullable|numeric|between:-90,90',
+        'longitude' => 'nullable|numeric|between:-180,180',
         'serviceTitle' => 'required|string|max:255',
         'serviceDescription' => 'required|string|max:500',
         'serviceCategory' => 'required|int|max:255',
@@ -42,6 +42,10 @@ class CreateProfileAndService extends Component
     public function createProfileAndService()
     {
         $this->validate();
+
+        $latitude=$this->latitude ? $this->latitude : 5.1106446;
+        $longitude=$this->longitude ? $this->longitude : -1.2987443;
+
 
         $portfolioImagePath = $this->portfolio_url ? $this->portfolio_url->store('portfolio_images', 'public') : null;
 

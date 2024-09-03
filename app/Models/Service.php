@@ -26,9 +26,10 @@ class Service extends Model
         return $this->hasMany(Booking::class);
     }
 
-    public function categories(): BelongsToMany
+    public function categories()
     {
-        return $this->belongsToMany(Category::class, 'service_category', 'service_id', 'category_id');
+        return $this->belongsTo(Category::class, 'category', 'id');
     }
+
 
 }

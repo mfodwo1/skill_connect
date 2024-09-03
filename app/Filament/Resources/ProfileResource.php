@@ -10,6 +10,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -23,14 +25,23 @@ class ProfileResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
+                Select::make('user_id')
+                    ->label('Service Provider')
+                    ->relationship('user', 'name', function ($query) {
+                        $query->where('role', 'service_provider');
+                    })
+                    ->searchable(['name', 'email'])
+                    ->required()
+                    ->preload(),
                 Forms\Components\Textarea::make('bio')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('skills')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('portfolio_url'),
+
+                FileUpload::make('portfolio_url')
+                    ->image()
+                    ->imageEditor(),
+
                 Forms\Components\TextInput::make('rating')
                     ->required()
                     ->numeric()
