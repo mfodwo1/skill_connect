@@ -39,7 +39,7 @@
             <div class="flex flex-col space-y-2">
 
                 @foreach($messages as $message)
-                    <div class="mb-2 {{ $message['sender_id'] === Auth::id() ? 'flex' : 'flex justify-end' }}">
+                    <div class="mb-2 {{ $message['sender_id'] === Auth::id() ? 'flex justify-end' : 'flex' }}">
                         <div class="bg-gray-300 text-black p-2 rounded-lg max-w-xs">
                             {{ $message['message'] }}
                         </div>

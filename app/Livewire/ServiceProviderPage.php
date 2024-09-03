@@ -27,6 +27,7 @@ class ServiceProviderPage extends Component
     {
         $this->serviceId = $serviceId;
         $this->service = Service::where('id',$this->serviceId)->with('provider')->first();
+
         $this->totalTaskCompleted = Booking::where('provider_id', $this->service->provider_id)->where('status', 'completed')->count();
     }
 
@@ -35,7 +36,7 @@ class ServiceProviderPage extends Component
         $booking = Booking::create([
             'service_id' => $this->service->id,
             'seeker_id' => Auth::id(),
-            'provider_id' => $this->service->provider->id,
+            'provider_id' => $this->service->provider->user_id,
             'booking_date' => now(),
             'status' => 'pending',
             'booking_message' =>$this->message,
